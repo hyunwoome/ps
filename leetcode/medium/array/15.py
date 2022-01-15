@@ -21,6 +21,8 @@ class Solution:
 
         return set(list(map(tuple, answer)))
 
+
+
 nums = [-1, 0, 1, 2, -1, 4]
 sol = Solution()
 print(sol.three_sum(nums))
