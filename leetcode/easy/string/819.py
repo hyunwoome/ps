@@ -1,6 +1,3 @@
-import re
-
-
 class Solution:
     def most_common_word(self, paragraph: str, banned):
         dic = {}
