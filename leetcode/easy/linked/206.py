@@ -10,11 +10,6 @@ class ListNode:
             self = self.next
 
 
-# head = [1, 2, 3, 4, 5]
-
-# answer = []
-# tmp = [1, ]
-
 class Solution:
     def reverse_list(self, head):
         cur = head  # 1. cur = 현재 노드를 가리키는 포인터
