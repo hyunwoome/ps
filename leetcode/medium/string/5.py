@@ -1,25 +1,27 @@
 class Solution:
     def longest_palindrome(self, s):
-        def is_palin(s, i, j):
-            while i >= 0 and j < len(s) and s[i] == s[j]:
-                i -= 1
-                j += 1
-            return s[i + 1: j]
 
-        p = ''
-        for i in range(len(s)):
-            p1 = is_palin(s, i, i + 1)
-            p2 = is_palin(s, i, i)
-            p = max([p, p1, p2], key=len)
-        return p
+        def expand(left, right):
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return s[left + 1:right]
+
+        if len(s) < 2 or s == s[::-1]:
+            return s
+
+        result = ''
+        for index in range(len(s) - 1):
+            result = max(result,
+                         expand(index, index + 1),  # 0 ~ 1 (짝수개)
+                         expand(index, index + 2),  # 0 ~ 2 (홀수개)
+                         key=len)
+        return result
 
 
-
-s = 'babad'
 sol = Solution()
-print(sol.longest_palindrome(s))
-
-
+assert sol.longest_palindrome('babad') == 'bab'
+assert sol.longest_palindrome('cbbd') == 'bb'
 
 # 시간초과
 # class Solution:
