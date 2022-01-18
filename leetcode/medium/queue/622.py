@@ -2,11 +2,12 @@ class MyCircularQueue:
 
     def __init__(self, k: int):
         self.data = [None] * k  # 실제 리스트 공간 생성
-        self.max_size = k
-        self.head = 0
-        self.tail = 0
+        self.max_size = k  # 큐의 사이즈
+        self.head = 0  # Head 포인터
+        self.tail = 0  # Tail 포인터
 
     def enQueue(self, value: int) -> bool:
+        # Tail이 None이면 큐가 차있는 것
         if self.data[self.tail] is None:
             self.data[self.tail] = value
             self.tail = (self.tail + 1) % self.max_size
@@ -15,6 +16,7 @@ class MyCircularQueue:
             return False
 
     def deQueue(self) -> bool:
+        # Head가 None이면 큐가 비어있는 것
         if self.data[self.head] is None:
             return False
         else:

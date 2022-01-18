@@ -35,9 +35,9 @@ def solution():
 solution()
 
 # 리스트 컴프리헨션 (List Comprehension)
-
 # arr = [int(input()) for _ in range(n)]
 
+# 동일
 # arr = []
 # for _ in range(n):
 #     arr.append(int(input()))
