@@ -12,9 +12,7 @@ class Solution:
         max_length = 0
 
         for index, char in enumerate(s):
-            """
-            이미 문자열이 들어있어 중복된 경우엔
-            """
+            # 이미 문자열이 들어있어 중복된 경우엔
             if char in used and start <= used[char]:
                 start = used[char] + 1
             else:
