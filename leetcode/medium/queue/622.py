@@ -10,7 +10,7 @@ class MyCircularQueue:
         # Tail이 None이면 큐가 차있는 것
         if self.data[self.tail] is None:
             self.data[self.tail] = value
-            self.tail = (self.tail + 1) % self.max_size
+            self.tail = (self.tail + 1) % self.max_size # 2 % 8 = 2
             return True
         else:
             return False
