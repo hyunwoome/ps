@@ -1,10 +1,7 @@
 def solution(progresses, speeds):
-    """
-    1. 100이 되면 기능개발 완료
-    2. 완료되더라도 앞에 완료가 안된 작업이 있다면 대기
-    """
     answer = []
-    while len(progresses) > 0:
+
+    while progresses:
 
         for i in range(len(progresses)):
             if progresses[i] < 100:
@@ -18,17 +15,13 @@ def solution(progresses, speeds):
                 count += 1
             else:
                 break
-        if count > 0:
+
+        if count:
             answer.append(count)
+
     return answer
 
 
-
-
-
-
-
-
-progresses = [93, 30, 55]
-speeds = [1, 30, 5]
-print(solution(progresses, speeds))
+pro = [93, 30, 55]
+spe = [1, 30, 5]
+print(solution(pro, spe))
