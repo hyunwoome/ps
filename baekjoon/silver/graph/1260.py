@@ -7,6 +7,7 @@ n, m, v = map(int, input().split())
 graph = [[0] * (n + 1) for _ in range(n + 1)]
 dfs_visited = [0] * (n + 1)
 bfs_visited = [0] * (n + 1)
+print(dfs_visited)
 
 for _ in range(m):
     a, b = map(int, input().split())
