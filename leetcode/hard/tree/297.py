@@ -39,6 +39,12 @@ def make_lst_by_bst(root, limit):
     return lst
 
 
+"""
+1. Serialize : 논리적인 데이터 구조를 물리적 형태로 바꿔주는 작업
+2. Deserialize : 물리적 형태의 데이터 구조를 논리적인 데이터 구조로 바꿔주는 작업 
+"""
+
+
 class Codec:
 
     def serialize(self, root):
@@ -46,6 +52,7 @@ class Codec:
             return []
         tree_root = make_tree_by(root, 0)
 
+        # 1번 인덱스부터 루트노드
         result = ['#']
         q = collections.deque([tree_root])
 
@@ -63,8 +70,7 @@ class Codec:
         if data == '# #':
             return None
 
-        nodes = data.split()
-        # ['#', '1', '2', '3', '#', '#', '4', '5', '#', '#', '#', '#']
+        nodes = data.split()  # ['#', '1', '2'....]
         tree_root = TreeNode(int(nodes[1]))
         q = collections.deque([tree_root])
         index = 2
@@ -83,10 +89,6 @@ class Codec:
 
         return make_lst_by_bst(tree_root, len(root) - 1)
 
-
-# ser = Codec()
-# deser = Codec()
-# ans = deser.deserialize(ser.serialize(root))
 
 ser = Codec()
 print(ser.serialize([1, 2, 3, None, None, 4, 5]))
