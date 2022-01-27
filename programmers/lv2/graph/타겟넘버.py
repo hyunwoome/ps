@@ -1,16 +1,15 @@
 def solution(numbers, target):
     answer = 0
 
-    # 종료조건 : 모든 인덱스에 방문하고, target과 일치하면 answer증가
     def DFS(index, sum):
+        # 종료조건
         if index == len(numbers):
-            nonlocal answer
             if sum == target:
+                nonlocal answer
                 answer += 1
             return
-
-        DFS(index + 1, sum + 1)
-        DFS(index + 1, sum - 1)
+        DFS(index + 1, sum + numbers[index])
+        DFS(index + 1, sum - numbers[index])
 
     DFS(0, 0)
     return answer
