@@ -95,3 +95,8 @@ print(min_heap.extract())  # 45
 print(min_heap.extract())  # 50
 
 min_heap.print_item()  # [None, 100]
+
+"""
+삽입 시간복잡도: O(log(N))
+추출 시간복잡도: O(log(N))
+"""
