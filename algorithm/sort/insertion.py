@@ -16,6 +16,7 @@ def insertion_sort2(lst):
         val = lst[idx]
         compare = idx - 1
 
+
         while lst[compare] > val and compare >= 0:
             lst[compare + 1] = lst[compare]
             compare -= 1
