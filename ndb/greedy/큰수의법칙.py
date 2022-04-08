@@ -1,21 +1,15 @@
-def solution(M, K, lst):
-    lst.sort(reverse=True)
-    answer = 0
-    max1 = lst[0]
-    max2 = lst[1]
+import sys
 
-    while M:
-        for _ in range(K):
-            answer += max1
-            M -= 1
-        answer += max2
-        M -= 1
+sys_input = sys.stdin.readline().rstrip()
+N, M, K = map(int, sys_input.split())
+data = sorted(list(map(int, input().split())), reverse=True)
 
-    return answer
+result = 0
 
+# M = 8
+# K = 3
 
-N = 5
-M = 8
-K = 3
-lst = [2, 4, 5, 4, 6]
-print(solution(M, K, lst))
+count1 = (M / (K + 1) * K) + (M % (K + 1))
+count2 = M - count1
+
+print(int(data[0] * count1 + data[1] * count2))
