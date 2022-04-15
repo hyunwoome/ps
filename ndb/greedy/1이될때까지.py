@@ -1,15 +1,24 @@
-def solution(N, K):
-    count = 0
-    while N != 1:
-        if N % K == 0:
-            N //= K
-            count += 1
-        else:
-            N -= 1
-            count += 1
-    return count
+import sys
+
+sys_input = sys.stdin.readline()
+
+N, K = map(int, sys_input.split())
+
+count = 0  # 횟수
+value = 0  # 몫
 
 
-N = 27
-K = 3
-print(solution(N, K))
+if N % K == 0:
+    value = N // K
+    count += 1
+    while value != 1:
+        value //= K
+        count += 1
+else:
+    value = N - 1
+    count += 1
+    while value != 1:
+        value //= K
+        count += 1
+
+print(count)
