@@ -1,26 +1,23 @@
-# 조건
-# 1. 문자 > 숫자
-# 2. 숫자는 순서대로
+from typing import List
+
 
 class Solution:
-    def reorder_log_files(self, logs):
-        letter = []
-        digits = []
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        # 문자 > 숫자
+        # 문자가 동일하면 식별자 순
+        # 숫자는 입력순
+        letters, digits = [], []
         for log in logs:
-            split_log = log.split(' ', 1)
-            if split_log[1][0].isdigit():
+            if log.split()[1].isdigit():
                 digits.append(log)
             else:
-                letter.append([split_log[1], split_log[0]])
-        letter.sort()
+                letters.append(log)
 
-        join_letter = []
-        for let in letter:
-            order = let[1] + ' ' + let[0]
-            join_letter.append(order)
+        letters.sort(key=lambda x: (x.split()[1:], x.split()[0]))
+        return letters + digits
 
-        return join_letter + digits
 
-logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
 sol = Solution()
-print(sol.reorder_log_files(logs))
+_logs = ["dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero"]
+# ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
+print(sol.reorderLogFiles(_logs))

@@ -1,21 +1,20 @@
+import re
+from typing import List
+from collections import Counter
+
+
 class Solution:
-    def most_common_word(self, paragraph: str, banned):
-        dic = {}
-        banned = set(banned)
-        for c in "!?',;.":
-            paragraph = paragraph.replace(c, " ")
-        paragraph = paragraph.lower().split()
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        words = [word for word in re.sub(r'[\W]', ' ', paragraph)
+                 .lower().split()
+                 if word not in banned]
 
-        for word in paragraph:
-            if word not in banned:
-                if word in dic:
-                    dic[word] += 1
-                else:
-                    dic[word] = 1
-        return max(dic, key=dic.get)
+        counts = Counter(words)
+        return counts.most_common(1)[0][0]
 
 
-p = "Bob hit a ball, the hit BALL flew far after it was hit."
-b = ["hit"]
 sol = Solution()
-print(sol.most_common_word(p, b))
+_paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+_banned = ["hit"]
+print(sol.mostCommonWord(_paragraph, _banned))
+
