@@ -1,21 +1,18 @@
+from typing import List
+from collections import defaultdict
+
+
 class Solution:
-    def group_anagrams(self, strs):
-        answer = []
-        dic = {}
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagrams = defaultdict(list)
+
         for word in strs:
-            sorted_word = ''.join(sorted(word))
-            if sorted_word not in dic:
-                dic[sorted_word] = [word]
-            else:
-                dic[sorted_word].append(word)
+            anagrams[''.join(sorted(word))].append(word)
 
-        for v in dic.values():
-            answer.append(v)
-        return answer
+        return list(anagrams.values())
 
 
-
-
-arr = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
 sol = Solution()
-print(sol.group_anagrams(arr))
+_strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+print(sol.groupAnagrams(_strs))
+
