@@ -1,17 +1,25 @@
-import sys
 from typing import List
 
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        profit = 0
-        min_price = sys.maxsize
+        buy = 0
+        sell = 1
+        max_profit = 0
 
-        for price in prices:
-            min_price = min(min_price, price)
-            profit = max(profit, price - min_price)
+        while sell < len(prices):
+            # 매수와 매도의 차
+            current_profit = prices[sell] - prices[buy]
 
-        return profit
+            # 이득일 경우
+            if prices[buy] < prices[sell]:
+                max_profit = max(max_profit, current_profit)
+            else:
+                buy = sell
+
+            sell += 1
+
+        return max_profit
 
 
 sol = Solution()
