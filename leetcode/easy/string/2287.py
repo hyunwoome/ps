@@ -16,7 +16,6 @@ class Solution:
         return result
 
 
-
 sol = Solution()
 _s = 'ilovecodingonleetcode'
 _target = 'code'
